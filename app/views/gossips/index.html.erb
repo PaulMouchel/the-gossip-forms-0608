@@ -1,0 +1,33 @@
+<div class='container text-center'>
+	<br>
+	<br>
+	<h1>Liste des potins</h1>
+  <br>
+  <a class="btn btn-success" href="/gossips/new">Clique ici pour créer un nouveau potin !</a>
+	<br>
+	<br>
+
+</div>
+
+
+<div class="card-columns">
+	<% Gossip.all.each do |gossip| %>
+
+	<div class="card">
+   		<h5 class="card-header text-center"><%= gossip.user.first_name %></h5>
+	    <div class="card-body">
+		    <p class="card-text"><%= gossip.title %></p>
+		    <p class="card-text"><%= link_to "Page du gossip", gossip_path(gossip.id), class: "btn btn-primary"%></p>
+	    </div>
+	 </div>
+
+
+		
+	<% end %>
+</div>
+
+<div class="text-center">
+  <br>
+  <a class="btn btn-success" href="/gossips/new">Clique ici pour créer un nouveau potin !</a>
+  <br/>
+</div>

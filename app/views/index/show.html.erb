@@ -1,0 +1,33 @@
+<div class='container text-center'>
+	<br>
+	<br>
+	<h1>Liste des potins</h1>
+	<br>
+	<br>
+</div>
+<% !if @gossip.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="card-columns">
+	<% Gossip.all.each do |gossip| %>
+
+	<div class="card">
+   		<h5 class="card-header text-center"><%= gossip.user.first_name %></h5>
+	    <div class="card-body">
+		    <p class="card-text"><%= gossip.title %></p>
+		    <p class="card-text"><%= link_to "Page du gossip", gossip_path(gossip.id), class: "btn btn-primary"%></p>
+	    </div>
+	 </div>
+
+
+		
+	<% end %>
+</div>
+
+
+ 

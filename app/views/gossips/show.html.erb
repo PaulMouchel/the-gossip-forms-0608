@@ -1,0 +1,26 @@
+
+
+
+<div class="container text-center">
+	<br><br>
+	<h1>Voici la page du potin n°<%= @id%> </h1>
+	<br><br>
+
+	<div class="card">
+   		<h5 class="card-header text-center"><%= @gossip.title%></h5>
+	    <div class="card-body">
+		    <p class="card-text"><%= @gossip.content%></p>
+
+		    <blockquote class="blockquote mb-0">
+			    <footer class="blockquote-footer text-right"><%= link_to "#{@full_name}", user_path(@gossip.user.id) %></footer>
+		    </blockquote>
+	    </div>
+	    <div class="card-footer text-muted">
+	        <%= @gossip.created_at%>
+	    </div>
+	 </div>
+
+
+</div>
+
+

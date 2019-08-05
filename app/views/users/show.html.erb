@@ -1,0 +1,47 @@
+
+
+<div class="container text-center">
+	<br><br>
+	<h1>Voici la page de <%= @user.first_name%> <%= @user.last_name%> </h1>
+	<br><br>
+
+    <div class="card">
+        <div class="active item">
+            <blockquote>
+            	<br>
+            	<i class="fa fa-quote-left fa-4x text-muted"></i>
+                <p><%= @user.description%></p>
+            </blockquote>
+        </div>
+    </div>
+
+    <br><br>
+
+	<table class="table">
+	  <tbody>
+	    <tr>
+	      <th scope="row">Prénom :</th>
+	      <td><%= @user.first_name%></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Nom :</th>
+	      <td><%= @user.last_name%></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Email :</th>
+	      <td><%= @user.email%></td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Age :</th>
+	      <td><%= @user.age%></td>
+	    </tr>
+		<tr>
+	      <th scope="row">Ville :</th>
+	      <td><%= @user.city.name%></td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+
+
+

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :team, only: [:index]
   resources :gossips, except: [:destroy] 
   resources :users, only: [:show]
+  root 'gossips#index'
 end

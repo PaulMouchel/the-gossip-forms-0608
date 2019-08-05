@@ -1,7 +1,7 @@
 class GossipsController < ApplicationController
 
 	def index
-		@gossip = Gossip.new
+
 	end
 
   def show
@@ -18,6 +18,7 @@ class GossipsController < ApplicationController
 	def create
 		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.last) # avec xxx qui sont les données obtenues à partir du formulaire
 		if @gossip.save # essaie de sauvegarder en base @gossip
+			flash[:success] = "Votre gossip à bien été enregistré !"
 			redirect_to gossips_path
 		else
 			render new_gossip_path

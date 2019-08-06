@@ -15,4 +15,8 @@ class User < ApplicationRecord
   has_many :comments
   belongs_to :city
   has_many :likes
+
+  def full_name
+    return "#{first_name} #{last_name}"
+  end
 end

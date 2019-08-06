@@ -6,8 +6,8 @@ class GossipsController < ApplicationController
 
   def show
   	@id = params[:id]
-  	@gossip = Gossip.all.find(@id)
-  	@full_name = "#{@gossip.user.first_name} #{@gossip.user.last_name}"
+		@gossip = Gossip.all.find(@id)
+		@comment = Comment.new
   end
 
 
@@ -16,8 +16,8 @@ class GossipsController < ApplicationController
 	end
 
 	def create
-		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.last) # avec xxx qui sont les données obtenues à partir du formulaire
-		if @gossip.save # essaie de sauvegarder en base @gossip
+		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.last) 
+		if @gossip.save 
 			flash[:success] = "Votre gossip à bien été enregistré !"
 			redirect_to gossips_path
 		else

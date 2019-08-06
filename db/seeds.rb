@@ -48,11 +48,7 @@ end
 end
 
 20.times do
-	if rand(0..1) == 0
-		Comment.create(content: Faker::TvShows::Stargate.quote ,parent: Gossip.all.sample,user: User.all.sample)
-	else
-		Comment.create(content: Faker::TvShows::Stargate.quote ,parent: Comment.all.sample,user: User.all.sample)
-	end
+	Comment.create(content: Faker::TvShows::Stargate.quote, gossip: Gossip.all.sample, user: User.all.sample)
 end
 
 20.times do

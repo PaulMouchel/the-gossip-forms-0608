@@ -1,21 +1,22 @@
 class CommentsController < ApplicationController
-  def index
-    id = params[:id]
-    @city = City.all.find(id)
-  end
-
-  def show
-
-  end
-
   def new
-    # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+    @comment = Comment.new
   end
 
   def create
-    # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
-    # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
+    p = comment_params
+    p[:user] = User.last
+    @comment = Comment.new(p)#, user: User.first) 
+    puts "-"*100
+    puts p
+ 
+    puts "-"*100
+    puts "-"*100
+    puts "-"*100
+
+		@comment.save 
+		flash[:success] = "Votre commentaire à bien été enregistré !"
+		redirect_to gossips_path
   end
 
   def edit
@@ -29,5 +30,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def comment_params
+    params.require(:comment).permit(:content, :gossip, :gossip_id)
   end
 end

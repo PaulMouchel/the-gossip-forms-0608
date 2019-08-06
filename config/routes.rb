@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :welcome, only: [:show]
   resources :contact, only: [:index]
   resources :team, only: [:index]
-  resources :gossips, except: [:destroy] 
+  resources :gossips
   resources :users, only: [:show]
+  resources :cities, only: [:show]
+  resources :comments
   root 'gossips#index'
 end

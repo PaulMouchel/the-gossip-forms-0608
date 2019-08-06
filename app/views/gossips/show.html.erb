@@ -1,4 +1,7 @@
-
+<% if flash[:success] %>
+    <div class="alert alert-success text-center" role="success"><%= flash[:success] %>
+    </div>
+ <% end %>
 
 
 <div class="container text-center">
@@ -16,11 +19,57 @@
 		    </blockquote>
 	    </div>
 	    <div class="card-footer text-muted">
-	        <%= @gossip.created_at%>
+	        Created at <%= @gossip.created_at%>, in <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.id) %>.
 	    </div>
 	 </div>
+	 	<br><br>
+		<div>
+			<%= link_to "Editer le gossip", edit_gossip_path(@gossip.id), class: "btn btn-primary"%>
+			<%= link_to "Supprimer le gossip", gossip_path(@gossip.id), class: "btn btn-danger", method: :delete, data: { confirm: 'Es-tu sûr de vouloir supprimer ce potin?' }%> 
+		</div>
+</div>
+<!------ Include the above in your HEAD tag ---------->
 
+<!--
+Author : Maniruzzaman Akash
+Email  : manirujjamanakash@gmail.com
+-->
 
+<div class="container">
+	<h2 class="text-center">Comments</h2>
+	
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+        	    <div class="col-md-2">
+        	        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+        	        <p class="text-secondary text-center">gossip.created_at</p>
+        	    </div>
+        	    <div class="col-md-10">
+        	        <p>
+        	            <a class="float-left" href="#"><strong>user.name</strong></a>
+        	       </p>
+        	       <div class="clearfix"></div>
+        	        <p>comment</p>
+        	        <p>
+        	            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+        	            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+        	       </p>
+        	    </div>
+						</div>
+					</div>
+	    </div>
+	</div>
+</div>
+
+<div class='container'>
+	<br>
+	<%= form_for @gossip, url: {action: "new"}, html: {class: "nifty_form"} do |f| %>
+		<%= label_tag 'Commentaire' %>
+		<%= f.text_field :content, class: "form-control" %>
+		<br>
+		<%= f.submit "Commente !", class: "btn btn-primary" %>
+	<% end %>
 </div>
 
 

@@ -37,7 +37,7 @@
 	    </tr>
 		<tr>
 	      <th scope="row">Ville :</th>
-	      <td><%= @user.city.name%></td>
+	      <td><%= link_to "#{@user.city.name}", city_path(@user.city.id) %></td>
 	    </tr>
 	  </tbody>
 	</table>

@@ -15,8 +15,8 @@
 </div>
 
 
-<div class="card-columns">
-	<% Gossip.all.each do |gossip| %>
+<div class="card-columns container">
+	<% Gossip.all.reverse.each do |gossip| %>
 
 	<div class="card">
    		<h5 class="card-header text-center"><%= gossip.user.first_name %></h5>

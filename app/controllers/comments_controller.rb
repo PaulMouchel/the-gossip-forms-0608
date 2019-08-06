@@ -6,30 +6,33 @@ class CommentsController < ApplicationController
   def create
     p = comment_params
     p[:user] = User.last
-    @comment = Comment.new(p)#, user: User.first) 
-    puts "-"*100
-    puts p
- 
-    puts "-"*100
-    puts "-"*100
-    puts "-"*100
-
-		@comment.save 
-		flash[:success] = "Votre commentaire à bien été enregistré !"
-		redirect_to gossips_path
+    @comment = Comment.new(p)
+    if @comment.save 
+      flash[:success] = "Votre commentaire à bien été enregistré !"
+    else 
+      flash[:error] = "Merci d'écrire quelque chose si tu veux écrire un commentaire! Ca voit de soit..."
+    end
+		redirect_back fallback_location: gossips_path
   end
 
   def edit
-    # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
-  end
+  	@comment = Comment.find(params[:id])
+	end
 
-  def update
-    # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params
-    # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
-  end
+	def update
+		@comment = Comment.find(params[:id])
+		if @comment.update(comment_params)
+			flash[:success] = "Votre comment à bien été modifié !"
+      redirect_to gossip_path(@comment.gossip.id)
+    else
+			render :edit
+		end
+	end	
 
   def destroy
+    @comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to gossip_path(@comment.gossip.id)
   end
 
   private 

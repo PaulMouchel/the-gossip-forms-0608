@@ -3,6 +3,11 @@
     </div>
  <% end %>
 
+<% if flash[:error] %>
+    <div class="alert alert-danger text-center" role="danger"><%= flash[:error] %>
+    </div>
+ <% end %>
+
 
 <div class="container text-center">
 	<br><br>
@@ -52,7 +57,7 @@ Email  : manirujjamanakash@gmail.com
 									<div class="clearfix"></div>
 										<p><%= comment.content%></p>
 										<p>
-												<a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+												<%= link_to fa_icon('edit', text: "Editer"), edit_comment_path(comment.id), class:"float-right btn btn-outline-primary ml-2" %>
 												<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
 									</p>
 							</div>

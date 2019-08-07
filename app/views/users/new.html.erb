@@ -1,0 +1,58 @@
+<form class="container">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">First name</label>
+      <input type="text" class="form-control" id="validationServer01" placeholder="First name" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer02">Last name</label>
+      <input type="text" class="form-control" id="validationServer02" placeholder="Last name" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerEmail">Email</label>
+        <div class="input-group-prepend">
+        </div>
+        <input type="text" class="form-control " id="validationServerEmail" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer03">City</label>
+      <input type="text" class="form-control " id="validationServer03" placeholder="City" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer04">Age</label>
+      <input type="number" min="0" class="form-control " id="validationServer04" placeholder="Age" required>
+    </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 mb-12">
+      <label for="validationServer05">Description</label>
+      <input type="text" class="form-control " id="validationServer05" placeholder="Description" required>
+      </div>
+
+    <div class="col-md-6 mb-6">
+      <label for="validationServer05">Mot de Passe</label>
+      <input type="password" class="form-control " id="password" name="password" placeholder="Ton mot de passe" required>
+    </div>
+
+    <div class="col-md-6 mb-6">
+      <label for="validationServer05">Confirme ton mot de Passe</label>
+      <input id="confirm-password" type="password" class="form-control" name="confirm_password" placeholder="Confirme ton mot de passe">
+    </div>
+  
+   <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
+      <label class="form-check-label" for="invalidCheck3">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>

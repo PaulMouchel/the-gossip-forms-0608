@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  # get '/' , to: "index#show"
+  root 'gossips#index'
   resources :welcome, only: [:show]
   resources :contact, only: [:index]
   resources :team, only: [:index]
   resources :gossips
-  resources :users, only: [:show]
+  resources :users
   resources :cities, only: [:show]
   resources :comments
-  root 'gossips#index'
+  resources :sessions, only: [:new, :create, :destroy]
 end

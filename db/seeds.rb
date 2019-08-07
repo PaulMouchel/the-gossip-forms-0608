@@ -25,7 +25,7 @@ end
 	last_name = Faker::Name.last_name
 	email = Faker::Internet.email(name: "#{first_name} #{last_name}", separators: '.')
 	description = Faker::TvShows::SouthPark.quote
-	User.create(first_name: first_name, last_name: last_name, email: email, city: City.all.sample, age: rand(14..80), description: description)
+	User.create(first_name: first_name, last_name: last_name, email: email, city: City.all.sample, age: rand(14..80), description: description, password: Faker::TvShows::SouthPark.quote)
 end
 
 20.times do

@@ -19,7 +19,7 @@
 	<% Gossip.all.reverse.each do |gossip| %>
 
 	<div class="card">
-   		<h5 class="card-header text-center"><%= gossip.user.first_name %></h5>
+   		<h5 class="card-header text-center"><%= gossip.user.full_name %></h5>
 	    <div class="card-body">
 		    <p class="card-text"><%= gossip.title %></p>
 		    <p class="card-text"><%= link_to "Page du gossip", gossip_path(gossip.id), class: "btn btn-primary"%></p>

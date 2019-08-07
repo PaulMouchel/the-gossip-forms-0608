@@ -3,7 +3,7 @@ class Gossip < ApplicationRecord
   validates :content, presence: true
 	belongs_to :user
 	has_many :join_table_gossip_tags
-  has_many :tags, through: :join_table_gossip_tags
+  has_many :tags, through: :join_table_gossip_tags, dependent: :destroy
   has_many :comments
   has_many :likes
 end

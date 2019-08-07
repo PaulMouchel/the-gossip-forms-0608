@@ -37,7 +37,8 @@ class GossipsController < ApplicationController
 		@gossip = Gossip.find(params[:id])
 		gossip_params = params.require(:gossip).permit(:title, :content)
 		tag = Tag.find(params[:tag])
-		@join_table = JoinTableGossipTag.create(gossip: @gossip, tag: tag)
+		join_table = JoinTableGossipTag.where(gossip_id: @gossip.id)
+		join_table.each do |join| join.update(gossip: @gossip, tag: tag) end
 		if @gossip.update(gossip_params)
 			flash[:success] = "Votre gossip à bien été modifié !"
 			redirect_to @gossip

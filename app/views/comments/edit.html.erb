@@ -16,8 +16,7 @@
         <%= f.text_area :content, class: "form-control"%>
         <br>
         <%= f.submit "Editer ton commentaire", class: "btn btn-primary" %>
-        <%= link_to "Supprimer le commentaire", comment_path(@comment.id), class: "btn btn-danger", method: :delete, data: { confirm: 'Es-tu sûr de vouloir supprimer ce commentaire?' }%> 
-
+        <%= link_to "Supprimer le commentaire", gossip_comment_path(@comment.gossip, @comment), class: "btn btn-danger", method: :delete, data: { confirm: 'Es-tu sûr de vouloir supprimer ce commentaire?' }%> 
       <% end %>
     </div>
   </body>

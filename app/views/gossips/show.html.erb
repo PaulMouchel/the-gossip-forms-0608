@@ -15,7 +15,10 @@
 	<br><br>
 
 	<div class="card">
-   		<h5 class="card-header text-center"><%= @gossip.title%></h5>
+   		<h5 class="card-header text-center"><%= @gossip.title%>
+			 <%= button_to 'Like', gossip_like_path(@gossip.id), method: :post %>
+			<a class="float-right btn text-white btn-danger "> <i class="fa fa-heart"></i><%= " #{@gossip.likes.count}"%></a></h5>
+
 	    <div class="card-body">
 		    <p class="card-text"><%= @gossip.content%></p>
 
@@ -38,8 +41,10 @@
 	 </div>
 	 	<br><br>
 		<div>
+		<% if current_user == @gossip.user%>
 			<%= link_to "Editer le gossip", edit_gossip_path(@gossip.id), class: "btn btn-primary"%>
 			<%= link_to "Supprimer le gossip", gossip_path(@gossip.id), class: "btn btn-danger", method: :delete, data: { confirm: 'Es-tu sûr de vouloir supprimer ce potin?' }%> 
+		<% end %>
 		</div>
 </div>
 <!------ Include the above in your HEAD tag ---------->
@@ -65,8 +70,9 @@ Email  : manirujjamanakash@gmail.com
 										</p>
 									<div class="clearfix"></div>
 										<p><%= comment.content%></p>
-										<p>
-												<%= link_to fa_icon('edit', text: "Editer"), edit_comment_path(comment.id), class:"float-right btn btn-outline-primary ml-2" %>
+										<p><% if current_user == comment.user%>
+												<%= link_to fa_icon('edit', text: "Editer"), edit_gossip_comment_path(@gossip, comment), class:"float-right btn btn-outline-primary ml-2" %>
+												<% end %>
 												<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
 									</p>
 							</div>
@@ -74,11 +80,15 @@ Email  : manirujjamanakash@gmail.com
 				</div>
 		</div>
 	<% end %>
-	<%= form_for @comment, as: :comment, url: :comments, method: :post do |f| %>
+
+	<%= form_for([@gossip, @comment]) do |f| %>
 		<%= f.text_field :content, class: "form-control" %>
-		<%= f.hidden_field :gossip_id, :value => @gossip.id %>
 		<br>
+		<% if current_user %>
 		<%= f.submit "Commente !", class: "btn btn-primary" %>
+		<% else %>
+		<%= link_to "Commente !", new_session_path, class: "btn btn-primary"%>
+		<% end %>
 	<% end %>
 </div>
 

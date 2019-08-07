@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
 
   def create
     p = comment_params
-    p[:user] = User.last
+    p[:user] = current_user
     @comment = Comment.new(p)
     if @comment.save 
       flash[:success] = "Votre commentaire à bien été enregistré !"
     else 
-      flash[:error] = "Merci d'écrire quelque chose si tu veux écrire un commentaire! Ca voit de soit..."
+      flash[:error] = "Merci d'écrire quelque chose si tu veux écrire un commentaire! Enfin..."
     end
 		redirect_back fallback_location: gossips_path
   end
@@ -38,6 +38,6 @@ class CommentsController < ApplicationController
   private 
 
   def comment_params
-    params.require(:comment).permit(:content, :gossip, :gossip_id)
+    params.require(:comment).permit(:content, :gossip_id, :id)
   end
 end

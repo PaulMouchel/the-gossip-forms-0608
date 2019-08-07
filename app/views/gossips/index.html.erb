@@ -8,7 +8,11 @@
 	<br>
 	<h1>Liste des potins</h1>
   <br>
-  <a class="btn btn-success" href="/gossips/new">Clique ici pour créer un nouveau potin !</a>
+	<% if current_user %>
+	<%= link_to "Clique ici pour créer un nouveau potin !", new_gossip_path, class: "btn btn-success"%>
+	<% else %>
+	<%= link_to "Clique ici pour créer un nouveau potin !", new_session_path, class: "btn btn-success"%>
+	<% end %>
 	<br>
 	<br>
 
@@ -35,10 +39,4 @@
 
 		
 	<% end %>
-</div>
-
-<div class="text-center">
-  <br>
-  <a class="btn btn-success" href="/gossips/new">Clique ici pour créer un nouveau potin !</a>
-  <br/>
 </div>

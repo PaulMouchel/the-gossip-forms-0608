@@ -17,7 +17,7 @@ class GossipsController < ApplicationController
 	end
 
 	def create
-		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.last) 
+		@gossip = Gossip.new(title: params[:title], content: params[:content], user: current_user)
 		tag = Tag.find(params[:tag])
 		@join_table = JoinTableGossipTag.create(gossip: @gossip, tag: tag)
 		if @gossip.save 

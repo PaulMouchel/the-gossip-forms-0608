@@ -39,6 +39,19 @@
 	      <th scope="row">Ville :</th>
 	      <td><%= link_to "#{@user.city.name}", city_path(@user.city.id) %></td>
 	    </tr>
+		<tr>
+	      <th scope="row">Nombre de gossips :</th>
+	      <td><%= @user.gossips.count %></td>
+	  </tr>
+				<tr>
+	      <th scope="row">Nombre de commentaires :</th>
+	      <td><%= @user.comments.count %></td>
+	  </tr>
+			  </tr>
+				<tr>
+	      <th scope="row">Nombre de likes :</th>
+	      <td><%= @user.likes.count %></td>
+	  </tr>
 	  </tbody>
 	</table>
 </div>

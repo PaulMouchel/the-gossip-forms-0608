@@ -8,12 +8,12 @@ class LikesController < ApplicationController
     else
       @gossip.likes.create(user: current_user)
     end
-    redirect_to gossip_path(@gossip)
+    redirect_back fallback_location: gossips_path
   end
 
   def destroy
     @like.destroy
-    redirect_to gossip_path(@gossip)
+    redirect_back fallback_location: gossips_path
   end
 
 

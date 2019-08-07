@@ -16,8 +16,8 @@
 
 	<div class="card">
    		<h5 class="card-header text-center"><%= @gossip.title%>
-			 <%= button_to 'Like', gossip_like_path(@gossip.id), method: :post %>
-			<a class="float-right btn text-white btn-danger "> <i class="fa fa-heart"></i><%= " #{@gossip.likes.count}"%></a></h5>
+			 <%= link_to fa_icon('heart', text: " #{@gossip.likes.count}"), gossip_likes_path(@gossip), method: :post , class:"float-right btn text-white btn-danger "%>
+			</h5>
 
 	    <div class="card-body">
 		    <p class="card-text"><%= @gossip.content%></p>

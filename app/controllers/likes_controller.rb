@@ -2,7 +2,8 @@ class LikesController < ApplicationController
   before_action :find_gossip
 
   def create
-    @gossip.likes.create(user_id: current_user.id)
+    @gossip.likes.create(user: current_user)
+    redirect_to gossip_path(@gossip)
   end
 
   private

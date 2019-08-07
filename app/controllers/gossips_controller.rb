@@ -1,7 +1,7 @@
 class GossipsController < ApplicationController
 
 	def index
-
+		@tags = Tag.all
 	end
 
   def show
@@ -13,10 +13,13 @@ class GossipsController < ApplicationController
 
 	def new
 		@gossip = Gossip.new
+		@tags = Tag.all
 	end
 
 	def create
 		@gossip = Gossip.new(title: params[:title], content: params[:content], user: User.last) 
+		tag = Tag.find(params[:tag])
+		@join_table = JoinTableGossipTag.create(gossip: @gossip, tag: tag)
 		if @gossip.save 
 			flash[:success] = "Votre gossip à bien été enregistré !"
 			redirect_to gossips_path
@@ -26,12 +29,15 @@ class GossipsController < ApplicationController
 	end
 
 	def edit
-  	@gossip = Gossip.find(params[:id])
+		@gossip = Gossip.find(params[:id])
+		@tags = Tag.all
 	end
 
 	def update
 		@gossip = Gossip.find(params[:id])
 		gossip_params = params.require(:gossip).permit(:title, :content)
+		tag = Tag.find(params[:tag])
+		@join_table = JoinTableGossipTag.create(gossip: @gossip, tag: tag)
 		if @gossip.update(gossip_params)
 			flash[:success] = "Votre gossip à bien été modifié !"
 			redirect_to @gossip

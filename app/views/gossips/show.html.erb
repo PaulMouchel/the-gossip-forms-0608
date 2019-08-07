@@ -20,7 +20,16 @@
 		    <p class="card-text"><%= @gossip.content%></p>
 
 		    <blockquote class="blockquote mb-0">
-			    <footer class="blockquote-footer text-right"><%= link_to "#{@gossip.user.full_name}", user_path(@gossip.user.id) %></footer>
+			    <footer class="row">
+						<div class="footer text-left col-lg-6">
+							<% @gossip.tags.each do |tag|%>
+								#<%= tag.title%> 
+							<% end %>
+						</div>
+						<div class="blockquote-footer text-right col-lg-6">
+							<%= link_to "#{@gossip.user.full_name}", user_path(@gossip.user.id) %>
+						</div>
+					</footer>
 		    </blockquote>
 	    </div>
 	    <div class="card-footer text-muted">

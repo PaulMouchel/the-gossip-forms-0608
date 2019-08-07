@@ -20,6 +20,9 @@
         <%= label_tag 'Gossip' %>
         <%= f.text_area :content, class: "form-control"%>
         <br>
+        <%= label_tag 'Tag' %>
+        <%= select_tag "tag", options_from_collection_for_select(@tags, "id", "title"), class:"dropdown"%>
+        <br><br>
         <%= f.submit "Editer ton potin", class: "btn btn-primary" %>
       <% end %>
     </div>

@@ -23,6 +23,11 @@
 	    <div class="card-body">
 		    <p class="card-text"><%= gossip.title %></p>
 		    <p class="card-text"><%= link_to "Page du gossip", gossip_path(gossip.id), class: "btn btn-primary"%></p>
+				<div class="card-text float-left small">
+					<% gossip.tags.each do |tag|%>
+						#<%= tag.title%> 
+					<% end %>
+				</div>
 				<p class="card-text float-right small"><%= gossip.comments.count%> commentaire<%= "s" if gossip.comments.count > 1 %></p>
 	    </div>
 	 </div>

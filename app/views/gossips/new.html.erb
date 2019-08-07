@@ -22,6 +22,9 @@
         <%= label_tag 'Gossip' %>
         <%= text_area_tag 'content', '', class: "form-control", placeholder:"Entre le gossip ici !" %>
         <br>
+        <%= label_tag 'Tag' %>
+        <%= select_tag "tag", options_from_collection_for_select(@tags, "id", "title"), class:"dropdown"%>
+        <br><br>
 
         <%= submit_tag "Créer ton potin", class: "btn btn-primary" %>
 

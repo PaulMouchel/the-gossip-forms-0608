@@ -46,4 +46,3 @@ class TagsController < ApplicationController
     # redirect_to gossips_path
   end
 end
-end

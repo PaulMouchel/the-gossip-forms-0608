@@ -10,16 +10,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    puts @user
   end
 
   def create
-    puts "$"*1000
-    puts user_params
-    puts "$"*1000
-
-    #@user = User.new(user_params)
-    city = City.find_by(name: user_params[:city])
+    city = City.find_or_create_by(name: user_params[:city], zip_code: params[:zip_code])
     @user = User.new(first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email], city: city, age: user_params[:age], description: user_params[:description], password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if @user.save 
           flash[:success] = "Vous êtes inscrits !"

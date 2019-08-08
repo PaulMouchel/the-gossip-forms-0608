@@ -18,7 +18,7 @@
    		<div class="card-header text-center">
 			 <h5><%= @gossip.title%></h5>
 			 	<% if current_user%>
-				<% like = gossip.pre_like(current_user)%>
+				<% like = @gossip.pre_like(current_user)%>
 				<% if like %>
 				<%= link_to fa_icon('heart', text: " #{@gossip.likes.count}"), gossip_like_path(@gossip, like), method: :delete, class:"btn text-white btn-danger btn-sm"%>
 				<% else %>
@@ -92,6 +92,7 @@ Email  : manirujjamanakash@gmail.com
 
 	<%= form_for([@gossip, @comment]) do |f| %>
 		<%= f.text_field :content, class: "form-control" %>
+		<%= f.hidden_field :gossip_id, :value => @gossip.id %>
 		<br>
 		<% if current_user %>
 		<%= f.submit "Commente !", class: "btn btn-primary" %>

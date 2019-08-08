@@ -4,47 +4,48 @@
           <h3 class="panel-title">Sign Up</h3>
       </div>
   </div>
+  <%= form_tag("users", method: "post", class:'form-signin') do %>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
-      <input type="text" class="form-control" id="validationServer01" placeholder="First name" required>
+      <%= text_field_tag("first_name", "", class: "form-control", id:"validationServer01", placeholder:"Ton prénom", required: "true") %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer02">Last name</label>
-      <input type="text" class="form-control" id="validationServer02" placeholder="Last name" required>
+      <%= text_field_tag("last_name", "", class: "form-control", id:"validationServer01", placeholder:"Ton nom", required: true) %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServerEmail">Email</label>
         <div class="input-group-prepend">
         </div>
-        <input type="text" class="form-control " id="validationServerEmail" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+        <%= text_field_tag("email", "", class: "form-control", id:"validationServer01", placeholder:"Ton email", required: true) %>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer03">City</label>
-      <input type="text" class="form-control " id="validationServer03" placeholder="City" required>
+      <%= text_field_tag("city", "", class: "form-control", id:"validationServer01", placeholder:"Ta ville", required: true) %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer04">Age</label>
-      <input type="number" min="0" class="form-control " id="validationServer04" placeholder="Age" required>
+      <%= number_field_tag("age", "", min:"0", class: "form-control", id:"validationServer01", placeholder:"Ton âge", required: true) %>
     </div>
     </div>
     <div class="form-row">
       <div class="col-md-12 mb-12">
       <label for="validationServer05">Description</label>
-      <input type="text" class="form-control " id="validationServer05" placeholder="Description" required>
+      <%= text_field_tag("description", "", class: "form-control", id:"validationServer01", placeholder:"Ta description") %>
       </div>
 
     <div class="col-md-6 mb-6">
       <label for="validationServer05">Mot de Passe</label>
-      <input type="password" class="form-control " id="password" name="password" placeholder="Ton mot de passe" required>
+      <%= password_field_tag("password", "", class: "form-control", id:"validationServer01", placeholder:"Ton mot de passe", required: true) %>
     </div>
 
     <div class="col-md-6 mb-6">
       <label for="validationServer05">Confirme ton mot de Passe</label>
-      <input id="confirm-password" type="password" class="form-control" name="confirm_password" placeholder="Confirme ton mot de passe">
+      <%= password_field_tag("confirm_password", "", class: "form-control", id:"validationServer01", placeholder:"Confirme ton mot de passe", required: true) %>
     </div>
   
    <div class="form-group">
@@ -59,5 +60,6 @@
     </div>
   </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <%= submit_tag "Bienvenue chez nous", class: "btn btn-primary" %>
+  <% end %>
 </form>

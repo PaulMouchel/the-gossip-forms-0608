@@ -28,5 +28,8 @@ Passwork: thegossipproject
 
 Ou créer votre propre compte avec le login !
 
+Vous pouvez aussi consulter la version en ligne à l'adresse :
+https://the-gossip-project-pm.herokuapp.com/
+
 ENJOY !
 

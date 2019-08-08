@@ -28,6 +28,13 @@ end
 	User.create(first_name: first_name, last_name: last_name, email: email, city: City.all.sample, age: rand(14..80), description: description, password: Faker::TvShows::SouthPark.quote)
 end
 
+User.create(first_name: "John", last_name: "Doe", email: "john.doe@thp.fr", city: City.all.sample, age: rand(14..80), description: Faker::TvShows::SouthPark.quote, password: "thegossipproject")
+
+
+10.times do
+	Tag.create(title: Faker::Creature::Animal.name)
+end
+
 20.times do
 	title = Faker::TvShows::Community.quotes[0..13]
 	content = Faker::TvShows::Simpsons.quote
@@ -35,16 +42,9 @@ end
 	Gossip.create(title: title, content: content, user: user)
 end
 
-10.times do
-	Tag.create(title: Faker::Creature::Animal.name)
-end
 
-15.times do
-	JoinTableGossipTag.create(gossip: Gossip.all.sample, tag: Tag.all.sample)
-end
-
-10.times do
-	PrivateMessage.create(content: Faker::TvShows::HowIMetYourMother.quote,recipient: User.all.sample,sender: User.all.sample)
+Gossip.all.each do |gossip|
+	JoinTableGossipTag.create(gossip: gossip, tag: Tag.all.sample)
 end
 
 20.times do
@@ -52,9 +52,5 @@ end
 end
 
 20.times do
-	if rand(0..1) == 0
 		Like.create(user: User.all.sample, gossip: Gossip.all.sample)
-	else
-		Like.create(user: User.all.sample, comment: Comment.all.sample)
-	end
 end

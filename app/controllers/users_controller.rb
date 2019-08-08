@@ -13,14 +13,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    city = City.find_or_create_by(name: user_params[:city], zip_code: params[:zip_code])
+    city = City.find_or_create_by(name: params[:city], zip_code: params[:zip_code])
     @user = User.new(first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email], city: city, age: user_params[:age], description: user_params[:description], password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if @user.save 
           flash[:success] = "Vous êtes inscrits !"
           session[:user_id] = @user.id
           redirect_to gossips_path
       else
-          redirect_to gossips_path
+          render :new
       end
   end
 
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :age, :description, :city, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :age, :description, :password, :password_confirmation)
   end
 end

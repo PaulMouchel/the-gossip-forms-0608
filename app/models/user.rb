@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0}
   validates :description, length: { maximum: 500 }
+  validates :city, presence: true, allow_nil: false
   validates :email, 
     presence: true, 
     uniqueness: true,

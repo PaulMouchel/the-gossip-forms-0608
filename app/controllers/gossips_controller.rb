@@ -24,6 +24,7 @@ class GossipsController < ApplicationController
 			flash[:success] = "Votre gossip à bien été enregistré !"
 			redirect_to gossips_path
 		else
+			@tags = Tag.all
 			render new_gossip_path
 		end
 	end
@@ -43,6 +44,7 @@ class GossipsController < ApplicationController
 			flash[:success] = "Votre gossip à bien été modifié !"
 			redirect_to @gossip
 		else
+			@tags = Tag.all
 			render :edit
 		end
 	end	

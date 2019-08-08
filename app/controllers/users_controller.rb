@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email], city: city, age: user_params[:age], description: user_params[:description], password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if @user.save 
           flash[:success] = "Vous êtes inscrits !"
+          session[:user_id] = @user.id
           redirect_to gossips_path
       else
           redirect_to gossips_path

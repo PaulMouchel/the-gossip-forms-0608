@@ -92,7 +92,6 @@ Email  : manirujjamanakash@gmail.com
 
 	<%= form_for([@gossip, @comment]) do |f| %>
 		<%= f.text_field :content, class: "form-control" %>
-		<%= f.hidden_field :gossip_id, :value => @gossip.id %>
 		<br>
 		<% if current_user %>
 		<%= f.submit "Commente !", class: "btn btn-primary" %>

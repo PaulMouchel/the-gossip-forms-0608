@@ -4,7 +4,7 @@
           <h3 class="panel-title">Sign Up</h3>
       </div>
   </div>
-  <%= form_tag("users", method: "post", class:'form-signin') do %>
+<%= form_tag('/users', method: "post", class:'form-signin') do %>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
@@ -60,6 +60,22 @@
     </div>
   </div>
   </div>
-  <%= submit_tag "Bienvenue chez nous", class: "btn btn-primary" %>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
   <% end %>
 </form>
+
+<div class='container form-sub text-center'>
+<%= form_tag('/users', method: "post", class:'form-signin') do %>
+        <h1 class="h3 mb-3 font-weight-normal">Veuillez vous inscrire</h1>
+        <%= text_field_tag('first_name', '', class:'form-control', required:'true',placeholder:"First Name", autofocus:'')%>
+        <%= text_field_tag('last_name', '', class:'form-control', required:'true',placeholder:"Last Name", autofocus:'')%>
+        <%= text_field_tag('description', '', class:'form-control', required:'true',placeholder:"Description", autofocus:'')%>
+        <%= text_field_tag("city", "", class: "form-control", id:"validationServer01", placeholder:"Ta ville", required: true) %>
+        <%= text_field_tag('age', '', class:'form-control', required:'true',placeholder:"Age", autofocus:'')%>
+        <%= text_field_tag('email', '', class:'form-control', required:'true',placeholder:"Email address", autofocus:'')%>
+        <%= text_field_tag('password', '', id:'inputPassword', type:'password', class:'form-control', placeholder:"Password", required:'true') %>
+        <%= text_field_tag('password_confirmation', '', id:'confirmPassword', type:'password', class:'form-control', placeholder:"Password", required:'true') %>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+        <p class="mt-5 mb-3 text-muted">© 2019</p>
+    <%end%>
+</div>

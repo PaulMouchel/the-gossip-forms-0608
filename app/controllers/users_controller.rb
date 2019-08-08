@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
-  	id = params[:id]
-  	@user = User.all.find(id)
+      id = params[:id]
+      @user = User.all.find(id)
   end
 
   def new
@@ -18,13 +18,15 @@ class UsersController < ApplicationController
     puts user_params
     puts "$"*1000
 
-    @user = User.new(user_params)
-		if @user.save 
-			flash[:success] = "Vous êtes inscrits !"
-			redirect_to gossips_path
-		else
-			render new_gossip_path
-		end
+    #@user = User.new(user_params)
+    city = City.find_by(name: user_params[:city])
+    @user = User.new(first_name: user_params[:first_name], last_name: user_params[:last_name], email: user_params[:email], city: city, age: user_params[:age], description: user_params[:description], password: user_params[:password], password_confirmation: user_params[:password_confirmation])
+        if @user.save 
+            flash[:success] = "Vous êtes inscrits !"
+            redirect_to gossips_path
+        else
+            redirect_to gossips_path
+        end
   end
 
   def edit
@@ -46,3 +48,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :age, :description, :city, :password, :password_confirmation)
   end
 end
+

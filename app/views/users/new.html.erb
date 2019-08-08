@@ -4,78 +4,52 @@
           <h3 class="panel-title">Sign Up</h3>
       </div>
   </div>
-<%= form_tag('/users', method: "post", class:'form-signin') do %>
+
+<%= form_for([@user]) do |f| %>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
-      <%= text_field_tag("first_name", "", class: "form-control", id:"validationServer01", placeholder:"Ton prénom", required: "true") %>
+      <%= f.text_field :first_name, class: "form-control", id:"validationServer01", placeholder:"Ton prénom", required: true %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer02">Last name</label>
-      <%= text_field_tag("last_name", "", class: "form-control", id:"validationServer01", placeholder:"Ton nom", required: true) %>
+      <%= f.text_field :last_name, class: "form-control", id:"validationServer01", placeholder:"Ton nom", required: true %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServerEmail">Email</label>
         <div class="input-group-prepend">
         </div>
-        <%= text_field_tag("email", "", class: "form-control", id:"validationServer01", placeholder:"Ton email", required: true) %>
+        <%= f.text_field :email, class: "form-control", id:"validationServer01", placeholder:"Ton email", required: true %>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer03">City</label>
-      <%= text_field_tag("city", "", class: "form-control", id:"validationServer01", placeholder:"Ta ville", required: true) %>
+      <%= f.text_field :city, class: "form-control", id:"validationServer01", placeholder:"Ta ville", required: true %>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer04">Age</label>
-      <%= number_field_tag("age", "", min:"0", class: "form-control", id:"validationServer01", placeholder:"Ton âge", required: true) %>
+      <%= f.number_field :age, min:"0", class: "form-control", id:"validationServer01", placeholder:"Ton âge", required: true %>
     </div>
     </div>
     <div class="form-row">
       <div class="col-md-12 mb-12">
       <label for="validationServer05">Description</label>
-      <%= text_field_tag("description", "", class: "form-control", id:"validationServer01", placeholder:"Ta description") %>
+      <%= f.text_field :description, class: "form-control", id:"validationServer01", placeholder:"Ta description" %>
       </div>
 
     <div class="col-md-6 mb-6">
       <label for="validationServer05">Mot de Passe</label>
-      <%= password_field_tag("password", "", class: "form-control", id:"validationServer01", placeholder:"Ton mot de passe", required: true) %>
+      <%= f.password_field :password, class: "form-control", id:"validationServer01", placeholder:"Ton mot de passe", required: true %>
     </div>
 
     <div class="col-md-6 mb-6">
       <label for="validationServer05">Confirme ton mot de Passe</label>
-      <%= password_field_tag("confirm_password", "", class: "form-control", id:"validationServer01", placeholder:"Confirme ton mot de passe", required: true) %>
+      <%= f.password_field :password_confirmation, class: "form-control", id:"validationServer01", placeholder:"Confirme ton mot de passe", required: true %>
     </div>
-  
-   <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
+
   </div>
-  </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+  <%= f.submit "Bienvenue chez nous", class: "btn btn-primary" %>
   <% end %>
 </form>
-
-<div class='container form-sub text-center'>
-<%= form_tag('/users', method: "post", class:'form-signin') do %>
-        <h1 class="h3 mb-3 font-weight-normal">Veuillez vous inscrire</h1>
-        <%= text_field_tag('first_name', '', class:'form-control', required:'true',placeholder:"First Name", autofocus:'')%>
-        <%= text_field_tag('last_name', '', class:'form-control', required:'true',placeholder:"Last Name", autofocus:'')%>
-        <%= text_field_tag('description', '', class:'form-control', required:'true',placeholder:"Description", autofocus:'')%>
-        <%= text_field_tag("city", "", class: "form-control", id:"validationServer01", placeholder:"Ta ville", required: true) %>
-        <%= text_field_tag('age', '', class:'form-control', required:'true',placeholder:"Age", autofocus:'')%>
-        <%= text_field_tag('email', '', class:'form-control', required:'true',placeholder:"Email address", autofocus:'')%>
-        <%= text_field_tag('password', '', id:'inputPassword', type:'password', class:'form-control', placeholder:"Password", required:'true') %>
-        <%= text_field_tag('password_confirmation', '', id:'confirmPassword', type:'password', class:'form-control', placeholder:"Password", required:'true') %>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
-        <p class="mt-5 mb-3 text-muted">© 2019</p>
-    <%end%>
-</div>

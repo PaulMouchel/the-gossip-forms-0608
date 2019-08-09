@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :cities, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :conversations do
+    resources :private_messages
+  end
 end

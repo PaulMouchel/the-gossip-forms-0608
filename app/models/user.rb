@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
 	has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
   has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
+  has_many :join_table_users_conversation
+  has_many :conversations, through: :join_table_users_conversation
+  has_many :private_messages, through: :conversations
   has_many :gossips
   has_many :comments
   belongs_to :city

@@ -24,10 +24,14 @@
           <li class="nav-item">
             <%= link_to "Team", team_index_path, class: "nav-link" %>
           </li>
-          
           <li class="nav-item">
             <%= link_to "Contact", contact_index_path, class: "nav-link" %>
           </li>
+          <% if current_user %>
+          <li class="nav-item">
+            <%= link_to "Messages", conversations_path, class: "nav-link" %>
+          </li>
+          <% end %>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0">
           <% if !current_user%>
@@ -49,6 +53,45 @@
         </ul>
       </div>
     </nav>
-    <%= yield %>
+
+
+<div class='text-center'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <!-- Left menu -->
+      <div class="card">
+          <div class="card-header">
+            Villes
+          </div>
+          <ul class="list-group list-group-flush">
+            <% City.all.each do |city| %>
+              <li class="list-group-item"><%= link_to city.name, city_path(city.id), class:"nav-link" %></li>           
+            <% end %>
+          </ul>
+      </div>
+    </div>
+    <div class='col-md-8'>
+      <%= yield %>
+    </div>
+    <div class='col-md-2'>
+      <!-- Right menu -->
+      <div class="card">
+          <div class="card-header">
+            Utilisateurs
+          </div>
+          <ul class="list-group list-group-flush">
+            <% User.all.each do |user| %>
+              <li class="list-group-item"><%= link_to user.full_name, user_path(user.id), class:"nav-link" %></li>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+
   </body>
 </html>

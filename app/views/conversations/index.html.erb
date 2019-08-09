@@ -1,0 +1,51 @@
+<% if flash[:success] %>
+    <div class="alert alert-success text-center" role="success"><%= flash[:success] %>
+    </div>
+<% end %>
+
+<div class='container text-center'>
+	<br>
+	<br>
+	<h1>Liste des conversations</h1>
+  	<br>
+	<% if current_user %>
+		<%= link_to "Clique ici pour démarrer une nouvelle conversation !", new_conversation_path, class: "btn btn-success"%>
+	<% else %>
+		<%= link_to "Clique ici pour démarrer une nouvelle conversation !", new_session_path, class: "btn btn-success"%>
+	<% end %>
+	<br>
+	<br>
+</div>
+
+
+
+
+
+
+
+
+
+<% if current_user %>
+	<table class="table">
+	  	<thead>
+	    	<tr>
+	      		<th scope="col">Avec</th>
+	      		<th scope="col">Dernier message</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	  		<% current_user.conversations.each do |conversation| %>
+		    	<tr>
+		    		<td><%= link_to conversation.users.reject{|u| u == current_user}.map{ |user| user.full_name }.join(", "), conversation_path(conversation.id)%></td>
+		    		
+		      		<td>Mark</td>
+
+		    	</tr>
+		    <% end %>
+	  	</tbody>
+	</table>
+<% end %>
+
+
+
+

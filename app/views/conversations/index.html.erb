@@ -36,9 +36,10 @@
 	  	<tbody>
 	  		<% current_user.conversations.each do |conversation| %>
 		    	<tr>
-		    		<td><%= link_to conversation.users.reject{|u| u == current_user}.map{ |user| user.full_name }.join(", "), conversation_path(conversation.id)%></td>
 		    		
-		      		<td>Mark</td>
+		    		
+		      		<td><%= link_to conversation.users.reject{|u| u == current_user}.map{ |user| user.full_name }.join(", "), conversation_path(conversation.id)%></td>
+		      		<td><%= link_to conversation.private_messages.last.content, conversation_path(conversation.id)%></td>
 
 		    	</tr>
 		    <% end %>
